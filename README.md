@@ -1,1 +1,1 @@
-# This is our software engineering project.
+# This is the project for our software engineering class.
