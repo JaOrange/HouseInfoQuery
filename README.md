@@ -2,7 +2,7 @@
 
 
 ### 项目概述：
-* 从[链家](https://bj.lianjia.com/)网站实时爬取全国主要城市二手房信息并展示，以及实现对未来房价的预测
+* 从[链家](https://bj.lianjia.com/)实时爬取全国主要城市二手房信息并展示，以及实现对未来房价的预测
 * 采用Django、bootstrap框架
 * 额外的库：echarts、jQuery
 * 数据库：mysql
