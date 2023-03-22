@@ -80,3 +80,28 @@ def cityinfo(request):
         print(len(data_list))
         print(data_list)
         return redirect('/showdata/')
+    
+
+def showdata(request):
+    pass
+
+
+def sigin(request):
+    if request.method == 'GET':
+        return render(request, "sigin.html")
+    # 获取提交的数据
+    name = request.POST.get("username")
+    password = request.POST.get("password")
+    print(name, password)
+    # models.Admin.objects.create(username=name, password=password)
+    return redirect("/mainscene/")
+
+
+def login(request):
+    if request.method == 'GET':
+        return render(request, "login.html")
+    # 获取提交的数据
+    name = request.POST.get("username")
+    password = request.POST.get("password")
+    print(name, password)
+    return redirect("/mainscene/")
