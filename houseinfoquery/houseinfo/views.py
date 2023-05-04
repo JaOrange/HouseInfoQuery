@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect
 from pypinyin import lazy_pinyin, Style
 import requests
 import parsel
+from houseinfo import models
+from django.utils.safestring import mark_safe
 
 # Create your views here.
 
@@ -79,11 +81,77 @@ def cityinfo(request):
         data_list = pachong(py_name, pagenum)
         print(len(data_list))
         print(data_list)
+        if py_name == 'bj':
+            for item in data_list:
+                models.bjHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
         return redirect('/showdata/')
     
 
 def showdata(request):
-    pass
+    page = int(request.GET.get('page', 1))
+    page_size = 10
+    start = (page-1)*page_size
+    end = page*page_size
+    py_name = get_first_letter(name)
+    if py_name == 'bj':
+        data_list = models.bjHouseInfo.objects.all()[start:end]
+        total_data = models.bjHouseInfo.objects.all().count()
+    page_str_list = []
+    prev = '<li><a href="/showdata/?page={}">首页</a></li>'.format(1)
+    page_str_list.append(prev)
+    total_pagenum, div = divmod(total_data, page_size)
+    if div:
+        total_pagenum
+    plus = 5
+    if total_pagenum <= 2*plus+1:
+        start_page = 1
+        end_page = total_pagenum
+    else:
+        if page <= plus:
+            start_page = 1
+            end_page = 2*plus+1
+        else:
+            if (page + plus)>total_pagenum:
+                end_page = total_pagenum
+                start_page = total_pagenum - 2*plus
+            else:
+                start_page = page - plus
+                end_page = page + plus
+    if page > 1:
+        prev = '<li><a href="/showdata/?page={}">上一页</a></li>'.format(page - 1)
+    else:
+        prev = '<li><a href="/showdata/?page={}">上一页</a></li>'.format(1)
+    page_str_list.append(prev)
+    for i in range(start_page, end_page+1):
+        if i == page:
+            ele = '<li class="active"><a href="/showdata/?page={}">{}</a></li>'.format(i, i)
+        else:
+            ele = '<li><a href="/showdata/?page={}">{}</a></li>'.format(i, i)
+        page_str_list.append((ele))
+    if page < total_pagenum:
+        prev = '<li><a href="/showdata/?page={}">下一页</a></li>'.format(page + 1)
+    else:
+        prev = '<li><a href="/showdata/?page={}">下一页</a></li>'.format(total_pagenum)
+    page_str_list.append(prev)
+    prev = '<li><a href="/showdata/?page={}">尾页</a></li>'.format(total_pagenum)
+    page_str_list.append(prev)
+    search_string = """
+    <form method="get" style="width: 200px">
+        <div class="input-group">
+            <input type="text" class="form-control" placeholder="页码" name="page">
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">Go!</button>
+            </span>
+        </div>
+    </form>
+    """
+    page_str_list.append(search_string)
+    page_string = mark_safe(''.join(page_str_list))
+    return render(request, 'showdata.html', {"data": data_list, "page_string": page_string})
 
 
 def sigin(request):
@@ -93,7 +161,7 @@ def sigin(request):
     name = request.POST.get("username")
     password = request.POST.get("password")
     print(name, password)
-    # models.Admin.objects.create(username=name, password=password)
+    models.UserInfo.objects.create(username=name, password=password)
     return redirect("/mainscene/")
 
 
