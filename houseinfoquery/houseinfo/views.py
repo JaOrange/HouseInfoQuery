@@ -81,6 +81,13 @@ def cityinfo(request):
         data_list = pachong(py_name, pagenum)
         print(len(data_list))
         print(data_list)
+        if py_name == 'sh':
+            for item in data_list:
+                models.shHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'],\
+                                                area=item['area'], direction=item['direction'],\
+                                                decoration=item['decoration'], floor=item['floor'],\
+                                                year=item['year'], structure=item['structure'],\
+                                                total_price=item['total_price'], unit_price=item['unit_price'])
         if py_name == 'bj':
             for item in data_list:
                 models.bjHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
@@ -88,6 +95,140 @@ def cityinfo(request):
                                                   decoration=item['decoration'], floor=item['floor'], \
                                                   year=item['year'], structure=item['structure'], \
                                                   total_price=item['total_price'], unit_price=item['unit_price'])
+        if py_name == 'ty':
+            for item in data_list:
+                models.tyHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+        if py_name == 'tj':
+            for item in data_list:
+                models.tjHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'],\
+                                                area=item['area'], direction=item['direction'],\
+                                                decoration=item['decoration'], floor=item['floor'],\
+                                                year=item['year'], structure=item['structure'],\
+                                                total_price=item['total_price'], unit_price=item['unit_price'])
+        if py_name == 'xm':
+            for item in data_list:
+                models.xmHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+        if py_name == 'cq':
+            for item in data_list:
+                models.cqHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+
+        if py_name == 'sjz':
+            for item in data_list:
+                models.sjzHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+        if py_name == 'hhht':
+            for item in data_list:
+                models.hhhtHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+
+        if py_name == 'sy':
+            for item in data_list:
+                models.syHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+        if py_name == 'cc':
+            for item in data_list:
+                models.ccHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+
+        if py_name == 'heb':
+            for item in data_list:
+                models.hebHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'], unit_price=item['unit_price'])
+        if py_name == 'nj':
+            for item in data_list:
+                models.njHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
+        if py_name == 'hz':
+            for item in data_list:
+                models.hzHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
+        if py_name == 'hf':
+            for item in data_list:
+                models.hfHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
+        if py_name == 'nc':
+            for item in data_list:
+                models.ncHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
+        if py_name == 'jn':
+            for item in data_list:
+                models.jnHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
+        if py_name == 'zz':
+            for item in data_list:
+                models.zzHouseInfo.objects.create(builder=item['builder'], houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'], floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
+        if py_name == 'wh':
+            for item in data_list:
+                models.whHouseInfo.objects.create(builder=item['builder'],
+                                                  houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'],
+                                                  floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
+        if py_name == 'hz':
+            for item in data_list:
+                models.csHouseInfo.objects.create(builder=item['builder'],
+                                                  houseType=item['houseType'], \
+                                                  area=item['area'], direction=item['direction'], \
+                                                  decoration=item['decoration'],
+                                                  floor=item['floor'], \
+                                                  year=item['year'], structure=item['structure'], \
+                                                  total_price=item['total_price'],
+                                                  unit_price=item['unit_price'])
         return redirect('/showdata/')
     
 
