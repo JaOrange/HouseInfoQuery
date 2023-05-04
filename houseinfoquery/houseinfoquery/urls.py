@@ -23,7 +23,7 @@ urlpatterns = [
     path('showdata/', views.showdata),
     path('sigin/', views.sigin),
     path('login/', views.login),
-    # path('refresh/', views.refresh),
-    # path('show/', views.show),
-    # path('predict/', views.predict)
+    path('refresh/', views.refresh),
+    path('show/', views.show),
+    path('predict/', views.predict)
 ]
