@@ -239,12 +239,37 @@ def showdata(request):
     start = (page-1)*page_size
     end = page*page_size
     py_name = get_first_letter(name)
-    if py_name == 'bj':
+    if py_name == 'sh':
+        data_list = models.shHouseInfo.objects.all()[start:end]
+        total_data = models.shHouseInfo.objects.all().count()
+    elif py_name == 'ty':
+        data_list = models.tyHouseInfo.objects.all()[start:end]
+        total_data = models.tyHouseInfo.objects.all().count()
+    elif py_name == 'bj':
         data_list = models.bjHouseInfo.objects.all()[start:end]
         total_data = models.bjHouseInfo.objects.all().count()
-    page_str_list = []
-    prev = '<li><a href="/showdata/?page={}">首页</a></li>'.format(1)
-    page_str_list.append(prev)
+    elif py_name == 'cc':
+        data_list = models.ccHouseInfo.objects.all()[start:end]
+        total_data = models.ccHouseInfo.objects.all().count()
+    elif py_name == 'sy':
+        data_list = models.syHouseInfo.objects.all()[start:end]
+        total_data = models.syHouseInfo.objects.all().count()
+    elif py_name == 'nj':
+        data_list = models.njHouseInfo.objects.all()[start:end]
+        total_data = models.njHouseInfo.objects.all().count()
+    elif py_name == 'zz':
+        data_list = models.zzHouseInfo.objects.all()[start:end]
+        total_data = models.zzHouseInfo.objects.all().count()
+    elif py_name == 'tj':
+        data_list = models.tjHouseInfo.objects.all()[start:end]
+        total_data = models.tjHouseInfo.objects.all().count()
+    elif py_name == 'xm':
+        data_list = models.xmHouseInfo.objects.all()[start:end]
+        total_data = models.xmHouseInfo.objects.all().count()
+    elif py_name == 'hz':
+        data_list = models.hzHouseInfo.objects.all()[start:end]
+        total_data = models.hzHouseInfo.objects.all().count()
+
     total_pagenum, div = divmod(total_data, page_size)
     if div:
         total_pagenum
@@ -263,6 +288,10 @@ def showdata(request):
             else:
                 start_page = page - plus
                 end_page = page + plus
+    page_str_list = []
+    prev = '<li><a href="/showdata/?page={}">首页</a></li>'.format(1)
+    page_str_list.append(prev)
+
     if page > 1:
         prev = '<li><a href="/showdata/?page={}">上一页</a></li>'.format(page - 1)
     else:
